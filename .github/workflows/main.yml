@@ -17,7 +17,8 @@ jobs:
           toolchain: stable
       - uses: actions-rs/cargo@v1
         with:
-          command: build --manifest-path bin/Cargo.toml
+          command: build
+          args: --manifest-path bin/Cargo.toml
 
   test:
     name: Test
