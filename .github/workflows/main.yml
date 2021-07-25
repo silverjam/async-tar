@@ -41,7 +41,10 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: test
-  
+      - uses: actions-rs/cargo@v1
+        with:
+          command: cargo build --manifest-path bin/Cargo.toml
+
   fmt:
     name: Check formatting
     runs-on: ubuntu-latest
