@@ -7,6 +7,18 @@ on:
 jobs:
 
   check:
+    name: Check library compilation
+    steps:
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          override: true
+          toolchain: stable
+      - uses: actions-rs/cargo@v1
+        with:
+          command: build --manifest-path bin/Cargo.toml
+
+  test:
     name: Test
     runs-on: ${{ matrix.os }}
     strategy:
@@ -41,9 +53,6 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: test
-      - uses: actions-rs/cargo@v1
-        with:
-          command: cargo build --manifest-path bin/Cargo.toml
 
   fmt:
     name: Check formatting
